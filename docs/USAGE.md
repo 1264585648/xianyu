@@ -25,9 +25,11 @@ http://localhost:9000
 
 如果修改了 `.env` 的 `APP_PORT`，访问对应端口。
 
-## 2. 首次登录前必须修改
+## 2. 首次登录前确认密码
 
-编辑 `.env`：
+初始化脚本会自动创建 `.env`，并生成随机 `ADMIN_PASSWORD` 和 `JWT_SECRET_KEY`。
+
+打开 `.env` 查看登录密码，或改成自己记得住的强密码：
 
 ```text
 ADMIN_USERNAME=admin
