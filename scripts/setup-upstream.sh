@@ -7,8 +7,10 @@ TARGET_DIR="vendor/xianyu-auto-reply-fix"
 random_secret() {
   if command -v openssl >/dev/null 2>&1; then
     openssl rand -base64 32 | tr -d '\n'
+  elif command -v python3 >/dev/null 2>&1; then
+    python3 -c 'import secrets; print(secrets.token_urlsafe(32), end="")'
   else
-    LC_ALL=C tr -dc 'A-Za-z0-9' </dev/urandom | head -c 40
+    dd if=/dev/urandom bs=32 count=1 2>/dev/null | base64 | tr -d '\n'
   fi
 }
 
