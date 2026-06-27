@@ -22,20 +22,15 @@ cd xianyu
 powershell -ExecutionPolicy Bypass -File scripts/setup-upstream.ps1
 ```
 
-4. 编辑 `.env`，至少修改：
+脚本会自动创建 `.env`，并生成随机 `ADMIN_PASSWORD` 和 `JWT_SECRET_KEY`。首次登录前可以打开 `.env` 查看或改成自己记得住的强密码。
 
-```text
-ADMIN_PASSWORD=change-this-password
-JWT_SECRET_KEY=change-this-long-random-string
-```
-
-5. 启动服务。
+4. 启动服务。
 
 ```powershell
 docker compose up -d --build
 ```
 
-6. 打开后台。
+5. 打开后台。
 
 ```text
 http://localhost:9000
@@ -48,8 +43,6 @@ git clone https://github.com/1264585648/xianyu.git
 cd xianyu
 chmod +x scripts/setup-upstream.sh
 ./scripts/setup-upstream.sh
-cp .env.example .env
-# 修改 .env 中的 ADMIN_PASSWORD 和 JWT_SECRET_KEY
 docker compose up -d --build
 ```
 
@@ -81,6 +74,7 @@ docker compose restart
 - `AI_REPLY_ENABLED=false`，AI 回复默认关闭。
 - `USER_REGISTRATION_ENABLED=false`，默认不开放注册。
 - `vendor/`、`.env`、`data/`、`logs/`、`backups/` 均被 `.gitignore` 忽略。
+- 初始化脚本会为本机 `.env` 自动生成随机管理员密码和 JWT 密钥。
 
 配置好商品规则、发货内容和测试账号后，再按需打开 AI 回复或自动发货。
 
